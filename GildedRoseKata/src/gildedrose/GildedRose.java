@@ -3,6 +3,10 @@ package gildedrose;
 import java.util.List;
 
 public class GildedRose {
+	int numeros;
+	public void reducircalidad(Item item){
+		item.setQuality(item.getQuality()-1);
+	}
 	
 	public void updateQuality(List<Item> items) {
 		for (Item item : items) {
@@ -10,7 +14,7 @@ public class GildedRose {
 			if (!item.getName().equals("Aged Brie") && !item.getName().equals("Backstage passes to a TAFKAL80ETC concert")) {
 				if (item.getQuality() > 0) {
 					if (!item.getName().equals("Sulfuras, Hand of Ragnaros")) {
-						item.setQuality(item.getQuality() - 1);
+						reducircalidad(item);
 					}
 				}
 			} else {
@@ -42,7 +46,7 @@ public class GildedRose {
 					if (item.getName() != "Backstage passes to a TAFKAL80ETC concert") {
 						if (item.getQuality() > 0) {
 							if (item.getName() != "Sulfuras, Hand of Ragnaros") {
-								item.setQuality(item.getQuality() - 1);
+								reducircalidad(item);
 							}
 						}
 					} else {
