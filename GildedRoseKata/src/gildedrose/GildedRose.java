@@ -7,6 +7,14 @@ public class GildedRose {
 	public void reducircalidad(Item item){
 		item.setQuality(item.getQuality()-1);
 	}
+	public void subircantidad(Item item){
+		item.setQuality(item.getQuality()+1);
+	}
+	public void menordeCincuenta(Item item){
+		if(item.getQuality()<50){
+			subircantidad(item);
+		}
+	}
 	
 	public void updateQuality(List<Item> items) {
 		for (Item item : items) {
@@ -18,23 +26,19 @@ public class GildedRose {
 					}
 				}
 			} else {
-				if (item.getQuality() < 50) {
-					item.setQuality(item.getQuality() + 1);
+				menordeCincuenta(item);
+				
 
 					if (item.getName().equals("Backstage passes to a TAFKAL80ETC concert")) {
 						if (item.getSellIn() < 11) {
-							if (item.getQuality() < 50) {
-								item.setQuality(item.getQuality() + 1);
-							}
+							menordeCincuenta(item);
 						}
 
 						if (item.getSellIn() < 6) {
-							if (item.getQuality() < 50) {
-								item.setQuality(item.getQuality() + 1);
-							}
+							menordeCincuenta(item);
 						}
 					}
-				}
+				
 			}
 
 			if (item.getName() != "Sulfuras, Hand of Ragnaros") {
@@ -53,9 +57,7 @@ public class GildedRose {
 						item.setQuality(item.getQuality() - item.getQuality());
 					}
 				} else {
-					if (item.getQuality() < 50) {
-						item.setQuality(item.getQuality() + 1);
-					}
+					menordeCincuenta(item);
 				}
 			}
 		}
